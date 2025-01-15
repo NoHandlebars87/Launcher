@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, Menu } = require('electron');
 const { updateElectronApp } = require('update-electron-app');
 const windowStateKeeper = require('electron-window-state');
 
@@ -9,6 +9,8 @@ if (require('electron-squirrel-startup')) {
 updateElectronApp();
 
 function createWindow() {
+    Menu.setApplicationMenu(false);
+
     const mainWindowState = windowStateKeeper({
         defaultWidth: 1024,
         defaultHeight: 768
@@ -23,8 +25,6 @@ function createWindow() {
         height: mainWindowState.height,
         show: false
     });
-
-    win.setMenu(null);
     mainWindowState.manage(win);
 
     win.loadURL('https://2004.lostcity.rs/title');
