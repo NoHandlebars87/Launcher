@@ -113,7 +113,8 @@ app.on('web-contents-created', (event, contents) => {
     contents.on('will-navigate', (event, navigationUrl) => {
         const parsedUrl = new URL(navigationUrl)
 
-        if (parsedUrl.origin !== 'https://lostcity.rs' && !parsedUrl.origin.endsWith('.lostcity.rs')) {
+        if (parsedUrl.origin !== 'https://lostcity.rs' && !parsedUrl.origin.endsWith('.lostcity.rs') &&
+            parsedUrl.origin !== 'https://lostcity.markets') {
             event.preventDefault();
         }
     });
