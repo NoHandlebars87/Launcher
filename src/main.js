@@ -53,14 +53,14 @@ function createWindow() {
     win.webContents.on('before-input-event', (event, input) => {
         if (input.control && !input.alt) {
             if (input.key === '=') { // +
-                // zoom out
+                // zoom in
                 event.preventDefault();
 
                 if (win.webContents.zoomFactor < 5.0) {
                     win.webContents.zoomFactor += 0.1;
                 }
             } else if (input.key === '-') {
-                // zoom in
+                // zoom out
                 event.preventDefault();
 
                 if (win.webContents.zoomFactor > 0.6) {
