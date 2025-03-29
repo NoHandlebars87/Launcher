@@ -76,6 +76,10 @@ function createWindow() {
                 event.preventDefault();
 
                 win.loadURL('https://2004.lostcity.rs/title');
+            } else if (input.key === 'F5') {
+                event.preventDefault();
+
+                win.webContents.reloadIgnoringCache(); // Ctrl+F5 - reloads and ignores cache
             }
         } else if (input.key === 'F5') {
             // reload
