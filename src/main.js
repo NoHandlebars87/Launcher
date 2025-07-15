@@ -53,14 +53,14 @@ function createWindow() {
     win.webContents.on('before-input-event', (event, input) => {
         if (input.control && !input.alt) {
             if (input.key === '=') { // +
-                // zoom out
+                // zoom in
                 event.preventDefault();
 
                 if (win.webContents.zoomFactor < 5.0) {
                     win.webContents.zoomFactor += 0.1;
                 }
             } else if (input.key === '-') {
-                // zoom in
+                // zoom out
                 event.preventDefault();
 
                 if (win.webContents.zoomFactor > 0.6) {
@@ -76,6 +76,11 @@ function createWindow() {
                 event.preventDefault();
 
                 win.loadURL('https://2004.lostcity.rs/title');
+            } else if (input.key === 'F5') {
+                // reloads and ignores cache
+                event.preventDefault();
+
+                win.webContents.reloadIgnoringCache();
             }
         } else if (input.key === 'F5') {
             // reload
